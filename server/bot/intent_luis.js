@@ -2,9 +2,8 @@
 const axios = require('axios');
 
 // NOTE FOR HEROKU/AZURE NEEDS TO BE SET AS ENV VARIABLE
-const pvtkeys = require('../../pvt-keys/pvt-keys.js');
 
-var luisRootURLDSIA = `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/${pvtkeys.LUIS_APP_ID_DSIA_EN}?verbose=true&timezoneOffset=-360&subscription-key=${pvtkeys.LUIS_API_KEY}&q=`;
+var luisRootURLDSIA = `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/${process.env.LUIS_APP_ID_DSIA_EN}?verbose=true&timezoneOffset=-360&subscription-key=${process.env.LUIS_API_KEY}&q=`;
 
 var getIntentLUIS = (input) => {
     return new Promise((resolve, reject) => {
