@@ -27,6 +27,7 @@ var getResponseForIntent = async (intentMap, intent) => {
 
     // TODO: THIS IS WHERE YOU CAN ADD CUSTOM INTENT HANDLERS
     // I.E. CALL ANOTHER SERVICE, SCREEN SCRAPE, ETC...
+    // ADD RPA WORKFLOW HERE IF intent == something_RPA_related
 
     if (intent == 'general_hello') {
         returnResult = 'Hello! This is from a special intent response.';
@@ -37,10 +38,10 @@ var getResponseForIntent = async (intentMap, intent) => {
         var foundanswer = _.filter(intentMap.answers, function (q) {
             return q.intent == intent;
         });
-        returnResult = foundanswer[0].answer
+        returnResult = foundanswer[0].answer;
     }
 
     return (returnResult);
 }
 
-module.exports = { getBotResponse }
+module.exports = { getBotResponse };
