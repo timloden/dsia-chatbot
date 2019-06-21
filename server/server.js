@@ -7,6 +7,7 @@ const { isRealString } = require('./utils/validation.js');
 const bot = require('./bot/bot.js');
 const port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
+var twilio = require('twilio');
 
 const publicPath = path.join(__dirname, '../public');
 app = express();
