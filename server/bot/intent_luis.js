@@ -1,6 +1,7 @@
 //  Detects an intent using LUIS given a sentence. 
 const axios = require('axios');
-var pvtkeys = require('../../pvt-keys/pvt-keys.js')
+// comment out this line when deploying. Uncomment for local testing:
+// var pvtkeys = require('../../pvt-keys/pvt-keys.js')
 
 // NOTE FOR HEROKU/AZURE NEEDS TO BE SET AS ENV VARIABLE
 // pvtkeys file is not uploaded to GIT. You need to create your own.
