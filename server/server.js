@@ -75,7 +75,7 @@ app.post('/sms/', async (req, res) => {
         var authToken = twilio_account_api_key;   // Your Auth Token from www.twilio.com/console
         var client = new twilio(accountSid, authToken);
         var twilioResp = await client.messages.create({
-            body: botAnswer[i],
+            body: botAnswer,
             to: SMSFrom,  // Text this number
             from: '+19163451450' // From a valid Twilio number
         });
