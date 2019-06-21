@@ -1,6 +1,8 @@
 //  Detects an intent given a sentence. 
-// const dbg = require('../util/debug_utils.js');
 const intentLuis = require('./intent_luis.js');
+
+// this could be modified to use other services for intent detection beyond LUIS
+// this lite example defaults to LUIS
 var getIntent = (input) => {
     return new Promise(async (resolve, reject) => {
         try {

@@ -5,12 +5,13 @@ var _ = require('lodash');
 var getBotResponse = async (inputToSend) => {
     return new Promise(async (resolve, reject) => {
         try {
-            var intentResponse = await intentDetect.getIntent(inputToSend);
-            if (intentResponse === 'null') {
+            var fullLUISResponse = await intentDetect.getIntent(inputToSend);
+            console.log(fullLUISResponse);
+            if (fullLUISResponse === 'null') {
                 throw new Error('No results returned.');
             } else {
-                var topIntent = intentResponse.topIntent.intent;
-                var botAnswer = await getResponseForIntent(answerList, topIntent);
+                var topIntent = fullLUISResponse.topIntent.intent;
+                var botAnswer = await getResponseForIntent(answerList, topIntent, fullLUISResponse);
                 console.log(botAnswer);
                 resolve(botAnswer);
             }
@@ -21,7 +22,9 @@ var getBotResponse = async (inputToSend) => {
     });
 }
 
-var getResponseForIntent = async (intentMap, intent) => {
+// THIS IS THE MAIN FUNCTION THAT YOU SHOULD MODIFY TO CUSTOMIZE THE RESPONSES...
+
+var getResponseForIntent = async (intentMap, intent, fullLUISResponse) => {
 
     var returnResult = '';
 
@@ -30,9 +33,34 @@ var getResponseForIntent = async (intentMap, intent) => {
 
     if (intent == 'general_hello') {
         returnResult = 'Hello! This is from a special intent response.';
-    } else {
-        
-        // Otherwise we use the standard Q&A mapping:
+    } else if (intent == 'fave_food') {
+
+        // If the user is talking about their favorite food...
+
+        var entitiesFound = (fullLUISResponse.entities && fullLUISResponse.entities.length > 0);
+
+        // First, see if they've mentioned what food is their favorite...
+
+        if (entitiesFound) {
+
+            // Find all entities of type "food" (this code is more robust than it needs to be for this example, since we are only ever expecting food here.)
+
+            var foundfood = _.filter(fullLUISResponse.entities, function (q) {
+                return q.type == 'food';
+            });
+
+            // Right now, this only selects the first food they mention. This could be extended to support users who mention more than one food.
+
+            var food = foundfood[0].entity;
+            console.log(`got food: ${food}`);
+            returnResult = `Oh boy, I sure like ${food} too!`
+        } else {
+            returnResult = `how about you tell me what food you like...`;
+        }
+    }
+    else {
+
+        // Otherwise we use the standard Q&A mapping from the responses.json file:
 
         var foundanswer = _.filter(intentMap.answers, function (q) {
             return q.intent == intent;
