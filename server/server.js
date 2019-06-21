@@ -6,6 +6,8 @@ const { generateMessage } = require('./utils/message.js')
 const { isRealString } = require('./utils/validation.js');
 const bot = require('./bot/bot.js');
 const port = process.env.PORT || 3000;
+var bodyParser = require('body-parser');
+
 const publicPath = path.join(__dirname, '../public');
 app = express();
 var server = http.createServer(app);
