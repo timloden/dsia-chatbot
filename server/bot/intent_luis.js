@@ -9,7 +9,6 @@ const axios = require('axios');
 var luis_app_id = process.env.LUIS_APP_ID_DSIA_EN;
 var luis_api_key = process.env.LUIS_API_KEY;
 
-
 var luisRootURLDSIA = `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/${luis_app_id}?verbose=true&timezoneOffset=-360&subscription-key=${luis_api_key}&q=`;
 
 var getIntentLUIS = (input) => {

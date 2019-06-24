@@ -2,12 +2,20 @@
  
     "answers": [
         {
-            "intent": "general_hello",
-            "answer": "Hello world."
+            "intent": "what_is_calcoin",
+            "answer": "CalCoin is the crypto currecty used by california to dispurse benefits to Californians"
         },
         {
-            "intent": "general_who_made_you",
-            "answer": "DSIA students made me!"
+            "intent": "get_calcoin",
+            "answer": "Register at ca.app.calcoin to register for CalCoin"
+        },
+        {
+            "intent": "use_calcoin",
+            "answer": "Use CalCoin to purchase groceries"
+        },
+        {
+            "intent": "benefit",
+            "answer": "CalCoin is applicable for all California state benefits"
         },
         {
             "intent": "None",
