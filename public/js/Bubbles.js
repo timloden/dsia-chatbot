@@ -105,7 +105,7 @@ function Bubbles(container, self, options) {
 
   var titleLabel = document.createElement("div");
   titleLabel.className = "title-text";
-  titleLabel.innerHTML = "Ask DSIA";
+  titleLabel.innerHTML = "Ask CalCoin";
   titleBar.appendChild(titleLabel);
 
 
