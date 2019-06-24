@@ -46,13 +46,13 @@ io.on('connection', (socket) => {
         if (isRealString(message.text)) {
             try {
                 var botAnswer = await bot.getBotResponse(message.text);
-                socket.emit('newMessage', generateMessage('DSIA', unescape(botAnswer)));
+                socket.emit('newMessage', generateMessage('CalCoin', unescape(botAnswer)));
                 console.log('Chatbot response:');
                 console.log(botAnswer);
                 callback();
             }
             catch (e) {
-                socket.emit('newMessage', generateMessage('DSIA', 'Oops, something went wrong. Please try again later.'));
+                socket.emit('newMessage', generateMessage('CalCoin', 'Oops, something went wrong. Please try again later.'));
                 console.log(e);
             }
         }
@@ -78,7 +78,7 @@ app.post('/sms/', async (req, res) => {
         var twilioResp = await client.messages.create({
             body: botAnswer,
             to: SMSFrom,  // Text this number
-            from: '+19163451450' // From a valid Twilio number
+            from: '+19163452171' // From a valid Twilio number
         });
         console.log(twilioResp);
 
